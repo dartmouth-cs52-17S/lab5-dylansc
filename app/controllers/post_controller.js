@@ -2,7 +2,7 @@ import PostModel from '../models/post_model';
 
 const cleanPosts = (posts) => {
   return posts.map((post) => {
-    return { id: post._id, title: post.title, tags: post.tags };
+    return { id: post._id, title: post.title, tags: post.tags, cover_url: post.cover_url };
   });
 };
 
@@ -26,8 +26,9 @@ export const createPost = (req, res) => {
 export const getPosts = (req, res) => {
   // res.send('posts should be returned\n');
   PostModel.find({})
-  .sort('created_at')
+  // .sort('created_at')
   .then((returnedPosts) => {
+    console.log(returnedPosts);
     res.json(cleanPosts(returnedPosts));
   })
   .catch((err) => {
@@ -47,7 +48,7 @@ export const getPost = (req, res) => {
 };
 
 export const deletePost = (req, res) => {
-  PostModel.remove({ _id: req.params.id })
+  PostModel.findOneAndRemove({ _id: req.params.id })
     .then(() => {
       res.json('Post Deleted Successfully');
     })
