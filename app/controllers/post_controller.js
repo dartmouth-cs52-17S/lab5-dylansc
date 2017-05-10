@@ -26,7 +26,7 @@ export const createPost = (req, res) => {
 export const getPosts = (req, res) => {
   // res.send('posts should be returned\n');
   PostModel.find({})
-  // .sort('created_at')
+  .sort('created_at')
   .then((returnedPosts) => {
     console.log(returnedPosts);
     res.json(cleanPosts(returnedPosts));
