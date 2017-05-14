@@ -11,18 +11,18 @@ function tokenForUser(user) {
 }
 
 export const signin = (req, res, next) => {
-  console.log('in signin req is');
-  console.log(req);
   res.send({ token: tokenForUser(req.user) });
 };
 
 //eslint-disable-next-line
 export const signup = (req, res, next) => {
-  console.log('in signup req is');
-  console.log(req);
-  const email = req.body.email;
+  // console.log('in signup req email,pass is');
+  // console.log(req.body.email);
+  // console.log(req.body.password);
+
+  const email = req.body.username;
   const password = req.body.password;
-  const username = req.body.email;
+  const username = req.body.username;
 
   if (!email || !password || !username) {
     return res.status(422).send('You must provide email, username, and password');

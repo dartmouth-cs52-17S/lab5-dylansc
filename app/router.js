@@ -24,9 +24,15 @@ router.route('/posts/:id')
   .put(requireAuth, Posts.updatePost)
   .delete(requireAuth, Posts.deletePost);
 
+// router.post('/signin', requireSignin, UserController.signin);
+
 router.post('/signin', requireSignin, UserController.signin);
 
-// router.post('/signup', UserController.signup);
+// router.route('/signin')
+//   .post(requireSignin, UserController.signin);
+
+// router.route('/signup')
+//   .post(UserController.signup);
 router.post('/signup', UserController.signup);
 
 

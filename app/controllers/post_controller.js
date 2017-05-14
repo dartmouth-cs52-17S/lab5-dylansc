@@ -8,12 +8,14 @@ const cleanPosts = (posts) => {
 
 export const createPost = (req, res) => {
   // res.send('post should be created here');
+  console.log('top of create post');
   const post = new PostModel();
   post.title = req.body.title;
   post.author = req.body.user;
   post.tags = req.body.tags;
   post.content = req.body.content;
   post.cover_url = req.body.cover_url;
+  console.log('before post save');
   post.save()
     .then((result) => {
       res.json({ message: 'Post created!' });

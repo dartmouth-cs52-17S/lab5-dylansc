@@ -25,6 +25,8 @@ const jwtOptions = {
 
 
 const localLogin = new LocalStrategy(localOptions, (email, password, done) => {
+  console.log('in locallogin');
+  console.log(email);
   // Verify this email and password, call done with the user
   // if it is the correct email and password
   // otherwise, call done with false
@@ -48,15 +50,22 @@ const localLogin = new LocalStrategy(localOptions, (email, password, done) => {
 });
 
 const jwtLogin = new JwtStrategy(jwtOptions, (payload, done) => {
+  console.log('in jwtlogin payload is');
+  console.log(payload);
   // See if the user ID in the payload exists in our database
   // If it does, call 'done' with that other
   // otherwise, call done without a user object
   UserModel.findById(payload.sub, (err, user) => {
     if (err) {
+      console.log('in err');
+      console.log(err);
       done(err, false);
     } else if (user) {
+      console.log('in user');
+      console.log(user);
       done(null, user);
     } else {
+      console.log('in done');
       done(null, false);
     }
   });
