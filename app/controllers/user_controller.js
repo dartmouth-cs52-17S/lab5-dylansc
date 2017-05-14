@@ -41,7 +41,7 @@ export const signup = (req, res, next) => {
         newUser.username = username;
         newUser.save()
           .then((result) => {
-            res.send({ token: tokenForUser(req.user) });
+            res.send({ token: tokenForUser(newUser) });
           })
           .catch((error) => {
             res.status(500).json({ error });
