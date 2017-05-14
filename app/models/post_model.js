@@ -3,6 +3,7 @@ import mongoose, { Schema } from 'mongoose';
 // create a PostSchema with a title field
 const PostSchema = new Schema({
   title: String,
+  author: { type: Schema.Types.ObjectId, ref: 'UserModel' },
   tags: String,
   content: String,
   cover_url: String,
