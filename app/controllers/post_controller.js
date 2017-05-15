@@ -8,16 +8,16 @@ const cleanPosts = (posts) => {
 
 export const createPost = (req, res) => {
   // res.send('post should be created here');
-  console.log('top of create post');
-  console.log('author is');
-  console.log(req.user.username);
+  // console.log('top of create post');
+  // console.log('author is');
+  // console.log(req.user.username);
   const post = new PostModel();
   post.title = req.body.title;
   post.author = req.user.username;
   post.tags = req.body.tags;
   post.content = req.body.content;
   post.cover_url = req.body.cover_url;
-  console.log('before post save');
+  // console.log('before post save');
   post.save()
     .then((result) => {
       res.json({ message: 'Post created!' });
@@ -32,7 +32,7 @@ export const getPosts = (req, res) => {
   // res.send('posts should be returned\n');
   PostModel.find({})
   .then((returnedPosts) => {
-    console.log(returnedPosts);
+    // console.log(returnedPosts);
     res.json(cleanPosts(returnedPosts));
   })
   .catch((err) => {
