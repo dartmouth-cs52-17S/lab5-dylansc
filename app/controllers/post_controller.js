@@ -9,9 +9,11 @@ const cleanPosts = (posts) => {
 export const createPost = (req, res) => {
   // res.send('post should be created here');
   console.log('top of create post');
+  console.log('author is');
+  console.log(req.user.username);
   const post = new PostModel();
   post.title = req.body.title;
-  post.author = req.body.user;
+  post.author = req.user.username;
   post.tags = req.body.tags;
   post.content = req.body.content;
   post.cover_url = req.body.cover_url;
